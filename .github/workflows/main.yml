@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install Qt 5.15.*
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         version: "5.15.*"
         arch: "win64_msvc2019_64"
@@ -22,10 +22,10 @@ jobs:
         mkdir build
         curl -L https://aka.ms/vs/17/release/vc_redist.x64.exe > vc_redist.x64.exe
         sed -i 's#C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Redist\\MSVC\\v142\\vcredist_x64.exe#'"$(readlink -f vc_redist.x64.exe | sed 's#/\([a-z]\)/#\1:\\#g' | tr '/' '\\' | sed 's/\\/\\\\/g')#g" bundle/win/Bundle.wxs
-        curl -L https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip > ninja.zip
+        curl -L https://github.com/ninja-build/ninja/releases/download/v1.12.1/ninja-win.zip > ninja.zip
         unzip ninja.zip
         mv ninja.exe build/
-        curl -L https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20240513/mpv-dev-x86_64-20240513-git-61f72bd.7z > mpv.7z
+        curl -L https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20240613/mpv-dev-x86_64-20240613-git-5158a3d.7z > mpv.7z
         7z x mpv.7z
         mkdir mpv
         mv include mpv

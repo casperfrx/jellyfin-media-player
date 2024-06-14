@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+      - release
+      - prerelease
 jobs:
   build-win64:
     runs-on: windows-latest
